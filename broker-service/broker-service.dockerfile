@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 RUN CGO_ENABLED=0 go build -o brokerApp ./cmd/api
-RUN chmod +x /brokerApp
+RUN chmod +x /app/brokerApp
 
 
 # build a tiniy docker image
