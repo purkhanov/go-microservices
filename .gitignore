@@ -1,3 +1,7 @@
 .vscode/
 
 index.html
+
+# ignore binary files
+brokerApp
+frontApp
