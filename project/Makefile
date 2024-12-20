@@ -19,7 +19,7 @@ up_build: build_broker build_auth
 ## down: stop docker compose
 down:
 	@echo "Stopping docker compose..."
-	docker compose down -v
+	docker compose down
 	@echo "Done!"
 
 ## build_broker: builds the broker binary as a linux executable

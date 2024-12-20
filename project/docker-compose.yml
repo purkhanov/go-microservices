@@ -19,7 +19,7 @@ services:
     container_name: auth-service
     restart: always
     ports:
-      - "8001:8000"
+      - "8001:80"
     deploy:
       mode: replicated
       replicas: 1
@@ -50,5 +50,5 @@ services:
 volumes:
   microservices_volume:
 
-networks:
-  microservices_net:
+# networks:
+#   microservices_net:
