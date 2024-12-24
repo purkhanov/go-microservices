@@ -12,6 +12,16 @@ services:
       mode: replicated
       replicas: 1
 
+  logger-service:
+    build:
+      context: ./../logger-service
+      dockerfile: ./../logger-service/logger-service.dockerfile
+    container_name: logger-service
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+
   auth-service:
     build:
       context: ./../auth-service
@@ -32,6 +42,7 @@ services:
 
   postgres:
     image: 'postgres:14.2'
+    container_name: micro_db_pg
     ports:
       - "5432:5432"
     deploy:
@@ -46,6 +57,7 @@ services:
 
   mongo:
     image: 'mongo:4.2.16-bionic'
+    container_name: micro_mongodb
     ports:
       - "27017:27017"
     environment:
