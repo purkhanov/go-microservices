@@ -6,5 +6,6 @@ index.html
 brokerApp
 authApp
 frontApp
+loggerServiceApp
 
 users.sql
