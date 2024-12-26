@@ -7,5 +7,6 @@ brokerApp
 authApp
 frontApp
 loggerServiceApp
+mailerApp
 
 users.sql
