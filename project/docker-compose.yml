@@ -110,10 +110,11 @@ services:
       mode: replicated
       replicas: 1
     volumes:
-      - microservices_volume:/var/lib/rabbitmq/
+      - microservices_volume2:/var/lib/rabbitmq/
 
 
 volumes:
   microservices_volume:
+  microservices_volume2:
 
 
