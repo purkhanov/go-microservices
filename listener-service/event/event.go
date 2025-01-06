@@ -21,6 +21,6 @@ func declareRandomQuue(ch *amqp.Channel) (amqp.Queue, error) {
 		false, // delete when unused?
 		true,  // exclusive?
 		false, // no-wait?
-		nil,   //arguments?
+		nil,   // arguments?
 	)
 }
