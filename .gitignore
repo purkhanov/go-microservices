@@ -8,5 +8,6 @@ authApp
 frontApp
 loggerServiceApp
 mailerApp
+listenerApp
 
 users.sql
