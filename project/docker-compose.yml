@@ -63,6 +63,7 @@ services:
     build:
       context: ./../listener-service
       dockerfile: ./../listener-service/listener-service.dockerfile
+    container_name: listener-service
     deploy:
       mode: replicated
       replicas: 1
