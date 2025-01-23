@@ -10,6 +10,9 @@ services:
     ports:
       - "80:80"
       - "433:433"
+    placement:
+      constraints:
+        - node.hostname == node-1 # node name
     volumes:
       - caddy_data:/data
       - caddy_config:/config
@@ -71,7 +74,8 @@ services:
   rabbitmq:
     image: 'rabbitmq:4.0-management-alpine'
     deploy:
-      mode: global
+      mode: replicated
+      replicas: 1
 
 
   mailhog:
@@ -79,19 +83,26 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
+    deploy:
+      mode: replicated
+      replicas: 1
 
   mongo:
     image: 'mongo:4.2.17-bionic'
     ports:
       - "27017:27017"
     deploy:
-      mode: global
+      mode: replicated
+      replicas: 1
+    placement:
+      constraints:
+        - node.hostname == node-1 # node name
     environment:
       MONGO_INITDB_DATABASE: logs
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - microservices_volume:/data/db
+      - ./db-data/mongo:/data/db
 
   postgres:
     image: 'postgres:14.2'
@@ -101,16 +112,18 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+    placement:
+      constraints:
+        - node.hostname == node-1 # node name
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: users
     volumes:
-      - microservices_volume:/var/lib/postgresql/data/
+      - ./db-data/postgres:/var/lib/postgresql/data/
 
 
 volumes:
-  microservices_volume:
   caddy_data:
     external: true
   caddy_config:
