@@ -34,9 +34,7 @@ func render(w http.ResponseWriter, t string) {
 	var templateSlice []string
 	templateSlice = append(templateSlice, fmt.Sprintf("templates/%s", t))
 
-	for _, x := range partials {
-		templateSlice = append(templateSlice, x)
-	}
+	templateSlice = append(templateSlice, partials...)
 
 	templ, err := template.ParseFS(templateFS, templateSlice...)
 	if err != nil {
