@@ -21,13 +21,14 @@
 	}
 }
 
-swarm.learn-code.ca:80 {
+swarm.learn-code.ca {
 	encode zstd gzip
 	import static
+	import security
 
 	reverse_proxy  http://front-end:8081
 }
 
-broker.learn-code.ca:80 {
+broker.learn-code.ca {
 	reverse_proxy http://broker-service:8080
 }
