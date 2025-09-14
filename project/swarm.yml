@@ -21,7 +21,7 @@ services:
     image: purkhanov/front-end:1.0.1
     deploy:
       mode: replicated
-      replicas: 1:
+      replicas: 1
     environment:
       BROKER_URL: "http://backend"
 
