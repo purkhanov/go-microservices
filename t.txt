@@ -7,3 +7,34 @@ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=p
 docker build -f logger-service.dockerfile -t purkhanov/logger-service:1.0.0 .
 
 docker push purkhanov/logger-service:1.0.0
+
+
+
+# Docker swarm commands
+
+docker swarm init
+
+docker swarm join-token worker
+docker swarm join-token manager
+
+docker stack deploy -c swarm.yml myapp
+
+docker service ls
+docker node ps
+
+docker service scale myapp_listener-service=3
+docker service update --image purkhanov/logger-service:1.0.1 myapp_logger-service
+
+docker stack rm myapp
+docker swarm leave
+
+
+minikube start
+minikube stop
+minikube dashboard
+minikube status
+kubectl get pods
+kubectl apply -f k8s
+kubectl get svc
+kubectl get deployments
+kubectl apply -f k8s/rabbit.yml
